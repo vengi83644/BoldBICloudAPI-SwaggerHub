@@ -4,6 +4,8 @@
     "title" : "API Reference",
     "version" : "1.0"
   },
+  "host" : "insights.boldbi.com",
+  "basePath" : "/bi/",
   "schemes" : [ ],
   "consumes" : [ "application/json" ],
   "produces" : [ "application/json" ],
