@@ -4,9 +4,6 @@
     "title" : "API Reference",
     "version" : "1.0"
   },
-  "host" : "insights.boldbi.com",
-  "basePath" : "/bi/",
-  "schemes" : [ ],
   "consumes" : [ "application/json" ],
   "produces" : [ "application/json" ],
   "tags" : [ {
@@ -730,5 +727,8 @@
     }
   },
   "parameters" : { },
-  "responses" : { }
+  "responses" : { },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/vengi83644/Bold-BI-Cloud/1.0",
+  "schemes" : [ "https" ]
 }
