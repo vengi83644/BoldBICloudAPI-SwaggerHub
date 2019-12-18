@@ -32,7 +32,7 @@
         "consumes" : [ "application/x-www-form-urlencoded" ],
         "parameters" : [ {
           "type" : "string",
-          "name" : "email",
+          "name" : "username",
           "in" : "formData",
           "required" : true,
           "x-nullable" : false,
