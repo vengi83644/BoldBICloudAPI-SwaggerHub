@@ -36,14 +36,14 @@
           "in" : "formData",
           "required" : true,
           "x-nullable" : false,
-          "description" : "Email address of the user."
+          "description" : "Email address of the user. (Use \"admin@boldbi.com\")"
         }, {
           "type" : "string",
           "name" : "password",
           "in" : "formData",
           "required" : true,
           "x-nullable" : false,
-          "description" : "Password of the user."
+          "description" : "Password of the user. (Use )"
         }, {
           "type" : "string",
           "name" : "grant_type",
