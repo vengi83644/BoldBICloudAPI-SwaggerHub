@@ -4,8 +4,8 @@
     "title" : "API Reference",
     "version" : "2.0"
   },
-  "host" : "insights.boldbi.com",
-  "basePath" : "/bi/",
+  "host" : "onpremise-demo.boldbi.com",
+  "basePath" : "/bi/api/site/site1/",
   "schemes" : [ ],
   "consumes" : [ "application/json" ],
   "produces" : [ "application/json" ],
@@ -31,7 +31,7 @@
     "Bearer" : [ ]
   } ],
   "paths" : {
-    "/api/token" : {
+    "/token" : {
       "post" : {
         "tags" : [ "Authentication" ],
         "summary" : "Authenticate User",
@@ -43,21 +43,21 @@
           "in" : "formData",
           "required" : true,
           "x-nullable" : false,
-          "description" : "The type of credentials authorizing the request for an access token."
+          "description" : "The type of credentials authorizing the request for an access token. (Use \"password\")"
         }, {
           "type" : "string",
           "name" : "username",
           "in" : "formData",
           "required" : true,
           "x-nullable" : false,
-          "description" : "Email address of the user."
+          "description" : "Email address of the user. (Use guest@boldbi.com for this demo API)"
         }, {
           "type" : "string",
           "name" : "password",
           "in" : "formData",
           "required" : true,
           "x-nullable" : false,
-          "description" : "Password of the user."
+          "description" : "Password of the user. (Use Demo759! for this demo API)"
         } ],
         "responses" : {
           "200" : {
@@ -82,7 +82,7 @@
         }
       }
     },
-    "/api/v2.0/permissions/users/{id}" : {
+    "/v2.0/permissions/users/{id}" : {
       "get" : {
         "tags" : [ "Permission" ],
         "summary" : "Get User Permission",
@@ -126,7 +126,7 @@
         }
       }
     },
-    "/api/v2.0/permissions/groups/{id}" : {
+    "/v2.0/permissions/groups/{id}" : {
       "get" : {
         "tags" : [ "Permission" ],
         "summary" : "Get Group Permission",
@@ -170,7 +170,7 @@
         }
       }
     },
-    "/api/v2.0/permissions/users" : {
+    "/v2.0/permissions/users" : {
       "post" : {
         "tags" : [ "Permission" ],
         "summary" : "Add User Permission",
@@ -215,7 +215,7 @@
         }
       }
     },
-    "/api/v2.0/permissions/groups" : {
+    "/v2.0/permissions/groups" : {
       "post" : {
         "tags" : [ "Permission" ],
         "summary" : "Add Group Permission",
@@ -263,7 +263,7 @@
         }
       }
     },
-    "/api/v2.O/permissions/users/{id}" : {
+    "/v2.O/permissions/users/{id}" : {
       "delete" : {
         "tags" : [ "Permission" ],
         "summary" : "Delete User Permission",
@@ -301,7 +301,7 @@
         }
       }
     },
-    "/api/v2.O/permissions/groups/{id}" : {
+    "/v2.O/permissions/groups/{id}" : {
       "delete" : {
         "tags" : [ "Permission" ],
         "summary" : "Delete Group Permission",
@@ -339,7 +339,7 @@
         }
       }
     },
-    "/api/v2.0/items" : {
+    "/v2.0/items" : {
       "get" : {
         "tags" : [ "Items" ],
         "summary" : "Get Items",
@@ -388,7 +388,7 @@
         }
       }
     },
-    "/api/v2.0/items/{id}" : {
+    "/v2.0/items/{id}" : {
       "get" : {
         "tags" : [ "Items" ],
         "summary" : "Get Item Detail",
@@ -426,7 +426,7 @@
         }
       }
     },
-    "/api/v2.0/dashboards/public" : {
+    "/v2.0/dashboards/public" : {
       "get" : {
         "tags" : [ "Items" ],
         "summary" : "Get Public Items",
@@ -472,7 +472,7 @@
         }
       }
     },
-    "/api/v2.0/dashboards/favorite" : {
+    "/v2.0/dashboards/favorite" : {
       "get" : {
         "tags" : [ "Items" ],
         "summary" : "Get Favorite Dashboards",
@@ -504,7 +504,7 @@
         }
       }
     },
-    "/api/v2.0/dashboards/tabs/{id}" : {
+    "/v2.0/dashboards/tabs/{id}" : {
       "get" : {
         "tags" : [ "Items" ],
         "summary" : "Get Child Dashboards",
@@ -544,7 +544,7 @@
         }
       }
     },
-    "/api/v2.0/categories" : {
+    "/v2.0/categories" : {
       "post" : {
         "tags" : [ "Items" ],
         "summary" : "Add Category",
@@ -589,7 +589,7 @@
         }
       }
     },
-    "/api/v2.0/dashboards" : {
+    "/v2.0/dashboards" : {
       "post" : {
         "tags" : [ "Items" ],
         "summary" : "Add Dashboard",
@@ -634,7 +634,7 @@
         }
       }
     },
-    "/api/v2.0/items/is-name-exists" : {
+    "/v2.0/items/is-name-exists" : {
       "post" : {
         "tags" : [ "Items" ],
         "summary" : "Check Item name existence",
@@ -673,7 +673,7 @@
         }
       }
     },
-    "/api/v2.O/categories" : {
+    "/v2.O/categories" : {
       "put" : {
         "tags" : [ "Items" ],
         "summary" : "Update Category",
@@ -721,7 +721,7 @@
         }
       }
     },
-    "/api/v2.O/dashboards" : {
+    "/v2.O/dashboards" : {
       "put" : {
         "tags" : [ "Items" ],
         "summary" : "Update Dashboard",
@@ -769,7 +769,7 @@
         }
       }
     },
-    "/api/v2.O/dashboards/favorite" : {
+    "/v2.O/dashboards/favorite" : {
       "put" : {
         "tags" : [ "Items" ],
         "summary" : "Update Favorite Dashboard",
@@ -811,7 +811,7 @@
         }
       }
     },
-    "/api/v2.0/dashboards/export" : {
+    "/v2.0/dashboards/export" : {
       "post" : {
         "tags" : [ "Items" ],
         "summary" : "Export Dashboard",
@@ -856,7 +856,7 @@
         }
       }
     },
-    "/api/v2.O/items/{id}" : {
+    "/v2.O/items/{id}" : {
       "delete" : {
         "tags" : [ "Items" ],
         "summary" : "Delete Item",
@@ -897,7 +897,7 @@
         }
       }
     },
-    "/api/v2.0/users" : {
+    "/v2.0/users" : {
       "post" : {
         "tags" : [ "Users" ],
         "summary" : "Add User",
@@ -944,7 +944,7 @@
         }
       }
     },
-    "/api/v2.0/users/{user}" : {
+    "/v2.0/users/{user}" : {
       "get" : {
         "tags" : [ "Users" ],
         "summary" : "Returns user details for a specified user.",
@@ -984,7 +984,7 @@
         }
       }
     },
-    "/api/v2.0/csv-users/download-template" : {
+    "/v2.0/csv-users/download-template" : {
       "get" : {
         "tags" : [ "Users" ],
         "summary" : "Download CSV template",
@@ -1009,7 +1009,7 @@
         }
       }
     },
-    "/api/v2.0/csv-users" : {
+    "/v2.0/csv-users" : {
       "post" : {
         "tags" : [ "Users" ],
         "summary" : "Add CSV user",
@@ -1047,7 +1047,7 @@
         }
       }
     },
-    "/api/v2.0/users/{user}/groups" : {
+    "/v2.0/users/{user}/groups" : {
       "get" : {
         "tags" : [ "Users" ],
         "summary" : "Get group details of particular user",
@@ -1086,7 +1086,7 @@
         }
       }
     },
-    "/api/v2.0/groups/{id}/users" : {
+    "/v2.0/groups/{id}/users" : {
       "post" : {
         "tags" : [ "Groups" ],
         "summary" : "Add user(s) to the particular group",
@@ -1188,7 +1188,7 @@
         }
       }
     },
-    "/api/v2.0/groups" : {
+    "/v2.0/groups" : {
       "get" : {
         "tags" : [ "Groups" ],
         "summary" : "Returns the list of groups",
