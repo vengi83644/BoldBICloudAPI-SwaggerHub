@@ -4,8 +4,8 @@
     "title" : "API Reference",
     "version" : "4.0"
   },
-  "host" : "insights.boldbi.com",
-  "basePath" : "/bi/",
+  "host" : "onpremise-demo.boldbi.com",
+  "basePath" : "/bi/api/site/site1/",
   "consumes" : [ "application/json" ],
   "produces" : [ "application/json" ],
   "tags" : [ {
@@ -24,7 +24,7 @@
     "Bearer" : [ ]
   } ],
   "paths" : {
-    "/api/token" : {
+    "/token" : {
       "post" : {
         "tags" : [ "Authentication" ],
         "summary" : "Authenticate User",
@@ -36,21 +36,21 @@
           "in" : "formData",
           "required" : true,
           "x-nullable" : false,
-          "description" : "The type of credentials authorizing the request for an access token."
+          "description" : "The type of credentials authorizing the request for an access token. (Use \"password\")"
         }, {
           "type" : "string",
           "name" : "username",
           "in" : "formData",
           "required" : true,
           "x-nullable" : false,
-          "description" : "Email address of the user."
+          "description" : "Email address of the user. (Use guest@boldbi.com for this demo API)"
         }, {
           "type" : "string",
           "name" : "password",
           "in" : "formData",
           "required" : true,
           "x-nullable" : false,
-          "description" : "Password of the user."
+          "description" : "Password of the user. (Use Demo759! for this demo API)"
         } ],
         "responses" : {
           "200" : {
@@ -75,7 +75,7 @@
         }
       }
     },
-    "/api/v4.0/dashboards/views" : {
+    "/v4.0/dashboards/views" : {
       "post" : {
         "tags" : [ "Dashboard Views" ],
         "summary" : "Add Dashboard View",
@@ -163,7 +163,7 @@
         }
       }
     },
-    "/api/v4.0/dashboards/views/{id}" : {
+    "/v4.0/dashboards/views/{id}" : {
       "delete" : {
         "tags" : [ "Dashboard Views" ],
         "summary" : "Delete Dashboard View",
@@ -240,7 +240,7 @@
         }
       }
     },
-    "/api/v4.0/dashboards/{id}/views" : {
+    "/v4.0/dashboards/{id}/views" : {
       "get" : {
         "tags" : [ "Dashboard Views" ],
         "summary" : "Get Dashboard Views",
