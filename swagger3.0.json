@@ -4,8 +4,8 @@
     "title" : "API Reference",
     "version" : "3.0"
   },
-  "host" : "insights.boldbi.com",
-  "basePath" : "/bi/",
+  "host" : "onpremise-demo.boldbi.com",
+  "basePath" : "/bi/api/site/site1/",
   "schemes" : [ ],
   "consumes" : [ "application/json" ],
   "produces" : [ "application/json" ],
@@ -29,7 +29,7 @@
     "Bearer" : [ ]
   } ],
   "paths" : {
-    "/api/token" : {
+    "/token" : {
       "post" : {
         "tags" : [ "Authentication" ],
         "summary" : "Authenticate User",
@@ -37,25 +37,25 @@
         "consumes" : [ "application/x-www-form-urlencoded" ],
         "parameters" : [ {
           "type" : "string",
+          "name" : "grant_type",
+          "in" : "formData",
+          "required" : true,
+          "x-nullable" : false,
+          "description" : "The type of credentials authorizing the request for an access token. (Use \"password\")"
+        }, {
+          "type" : "string",
           "name" : "username",
           "in" : "formData",
           "required" : true,
           "x-nullable" : false,
-          "description" : "Email address of the user."
+          "description" : "Email address of the user. (Use guest@boldbi.com for this demo API)"
         }, {
           "type" : "string",
           "name" : "password",
           "in" : "formData",
           "required" : true,
           "x-nullable" : false,
-          "description" : "Password of the user."
-        }, {
-          "type" : "string",
-          "name" : "grant_type",
-          "in" : "formData",
-          "required" : true,
-          "x-nullable" : false,
-          "description" : "The type of credentials authorizing the request for an access token. Valid values: `\"password\"`"
+          "description" : "Password of the user. (Use Demo759! for this demo API)"
         } ],
         "responses" : {
           "200" : {
@@ -80,7 +80,7 @@
         }
       }
     },
-    "/api/v3.0/dashboard/schedule" : {
+    "/v3.0/dashboard/schedule" : {
       "post" : {
         "tags" : [ "Items" ],
         "summary" : "Add Schedule",
@@ -122,7 +122,7 @@
         }
       }
     },
-    "/api/v3.0/dashboard/schedule/{scheduleid}" : {
+    "/v3.0/dashboard/schedule/{scheduleid}" : {
       "put" : {
         "tags" : [ "Items" ],
         "summary" : "Update Schedule",
@@ -172,7 +172,7 @@
         }
       }
     },
-    "/api/v3.0/items/{itemId}/location" : {
+    "/v3.0/items/{itemId}/location" : {
       "get" : {
         "tags" : [ "Items" ],
         "summary" : "Get Item Location",
@@ -213,7 +213,7 @@
         }
       }
     },
-    "/api/v3.0/users" : {
+    "/v3.0/users" : {
       "get" : {
         "tags" : [ "Users" ],
         "summary" : "Returns the list of users.",
@@ -241,7 +241,7 @@
         }
       }
     },
-    "/api/v3.0/users/{user}" : {
+    "/v3.0/users/{user}" : {
       "get" : {
         "tags" : [ "Users" ],
         "summary" : "Returns user details for a specified user.",
@@ -280,7 +280,7 @@
         }
       }
     },
-    "/api/v3.0/groups" : {
+    "/v3.0/groups" : {
       "get" : {
         "tags" : [ "Groups" ],
         "summary" : "Returns the list of groups.",
