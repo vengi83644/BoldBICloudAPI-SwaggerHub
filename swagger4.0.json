@@ -6,22 +6,13 @@
   },
   "host" : "onpremise-demo.boldbi.com",
   "basePath" : "/bi/api/site/site1/",
+  "schemes" : [ ],
   "consumes" : [ "application/json" ],
   "produces" : [ "application/json" ],
   "tags" : [ {
     "name" : "Authentication"
   }, {
     "name" : "Dashboard Views"
-  } ],
-  "securityDefinitions" : {
-    "Bearer" : {
-      "type" : "apiKey",
-      "name" : "Authorization",
-      "in" : "header"
-    }
-  },
-  "security" : [ {
-    "Bearer" : [ ]
   } ],
   "paths" : {
     "/token" : {
@@ -283,6 +274,121 @@
           }
         }
       }
+    },
+    "/v4.0/dashboard/{itemId}/copy" : {
+      "post" : {
+        "tags" : [ "Dashboards" ],
+        "summary" : "Copy Dashboard",
+        "description" : "Users who have access to the dashboard, can copy the dashboard by providing respective dashboard details in the request body.",
+        "operationId" : "Dashboards_CopyDashboard",
+        "parameters" : [ {
+          "type" : "string",
+          "name" : "itemId",
+          "in" : "path",
+          "required" : true,
+          "description" : "ItemId of the dashboard will be copied.",
+          "format" : "guid",
+          "x-nullable" : false
+        }, {
+          "name" : "apiCopyDashboard",
+          "in" : "body",
+          "required" : true,
+          "description" : "Details of the dashboard passed will be copied.",
+          "schema" : {
+            "$ref" : "#/definitions/ApiCopyDashboardRequestV4"
+          },
+          "x-nullable" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "x-nullable" : false,
+            "description" : "Dashbord has been copied successfully",
+            "schema" : {
+              "$ref" : "#/definitions/ApiCopyItemResponse"
+            }
+          },
+          "400" : {
+            "description" : "The content of the request body is missing or incomplete"
+          },
+          "401" : {
+            "description" : "Access denied"
+          },
+          "403" : {
+            "description" : "Do not have permission to set dashboard will be copied as public"
+          },
+          "404" : {
+            "description" : "Item detail not found"
+          },
+          "405" : {
+            "description" : "Request type was not POST"
+          },
+          "406" : {
+            "description" : "The content of the request body is invalid"
+          },
+          "409" : {
+            "description" : "Dashboard will be copied name already exist"
+          },
+          "417" : {
+            "description" : "Failed to copy the dashboard"
+          }
+        }
+      }
+    },
+    "/v4.0/datasource/{itemId}/copy" : {
+      "post" : {
+        "tags" : [ "DataSource" ],
+        "summary" : "Copy Data source",
+        "description" : "Users who have access to the data source, can copy the data source by providing respective data source details in the request body.",
+        "operationId" : "DataSource_CopyDataSource",
+        "parameters" : [ {
+          "type" : "string",
+          "name" : "itemId",
+          "in" : "path",
+          "required" : true,
+          "description" : "ItemId of the data source will be copied.",
+          "format" : "guid",
+          "x-nullable" : false
+        }, {
+          "name" : "apiCopyDatasource",
+          "in" : "body",
+          "required" : true,
+          "description" : "Details of the data source passed will be copied.",
+          "schema" : {
+            "$ref" : "#/definitions/ApiCopyDataSourceRequestV4"
+          },
+          "x-nullable" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "x-nullable" : false,
+            "description" : "Data source has been copied successfully",
+            "schema" : {
+              "$ref" : "#/definitions/ApiCopyItemResponse"
+            }
+          },
+          "400" : {
+            "description" : "The content of the request body is missing or incomplete"
+          },
+          "401" : {
+            "description" : "Access denied"
+          },
+          "404" : {
+            "description" : "Item detail not found"
+          },
+          "405" : {
+            "description" : "Request type was not POST"
+          },
+          "406" : {
+            "description" : "The content of the request body is invalid"
+          },
+          "409" : {
+            "description" : "Data source will be copied name already exist"
+          },
+          "417" : {
+            "description" : "Failed to copy the data source"
+          }
+        }
+      }
     }
   },
   "definitions" : {
@@ -431,6 +537,78 @@
         "ViewName" : {
           "type" : "string",
           "description" : "Specifies the name of the view."
+        }
+      }
+    },
+    "ApiCopyItemResponse" : {
+      "type" : "object",
+      "description" : "Response details of the copied item.",
+      "required" : [ "ApiStatus", "Status", "PublishedItemId", "Version" ],
+      "properties" : {
+        "ApiStatus" : {
+          "type" : "boolean",
+          "description" : "Returns the status of the API."
+        },
+        "Status" : {
+          "type" : "boolean",
+          "description" : "Returns status of the API request."
+        },
+        "PublishedItemId" : {
+          "type" : "string",
+          "description" : "Returns the published data source item id",
+          "format" : "guid"
+        },
+        "Version" : {
+          "type" : "integer",
+          "description" : "Returns the version number of the data source",
+          "format" : "int32"
+        },
+        "StatusMessage" : {
+          "type" : "string",
+          "description" : "Returns the status message from the API."
+        }
+      }
+    },
+    "ApiCopyDashboardRequestV4" : {
+      "type" : "object",
+      "description" : "Dashboard details.",
+      "required" : [ "Name", "CategoryId", "IsPublic", "IsCopyDatasource" ],
+      "properties" : {
+        "Name" : {
+          "type" : "string",
+          "description" : "Dashboard name."
+        },
+        "Description" : {
+          "type" : "string",
+          "description" : "Dashboard description."
+        },
+        "CategoryId" : {
+          "type" : "string",
+          "description" : "Category ID.",
+          "format" : "guid"
+        },
+        "IsPublic" : {
+          "type" : "boolean",
+          "description" : "Specify <i>true</i> to set the item as a public."
+        },
+        "IsCopyDatasource" : {
+          "type" : "boolean",
+          "description" : "Copy the data source of dashboard based on this value "
+        }
+      }
+    },
+    "ApiCopyDataSourceRequestV4" : {
+      "type" : "object",
+      "description" : "Data Source details.",
+      "required" : [ "Name" ],
+      "properties" : {
+        "Name" : {
+          "type" : "string",
+          "description" : "Data source name."
+        },
+        "Description" : {
+          "type" : "string",
+          "description" : "Data source description."
         }
       }
     }
