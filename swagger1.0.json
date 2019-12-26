@@ -4,8 +4,8 @@
     "title" : "API Reference",
     "version" : "1.0"
   },
-  "host" : "insights.boldbi.com",
-  "basePath" : "/bi/",
+  "host" : "onpremise-demo.boldbi.com",
+  "basePath" : "/bi/api/site/site1/",
   "schemes" : [ ],
   "consumes" : [ "application/json" ],
   "produces" : [ "application/json" ],
@@ -27,7 +27,7 @@
     "Bearer" : [ ]
   } ],
   "paths" : {
-    "/api/token" : {
+    "/token" : {
       "post" : {
         "tags" : [ "Authentication" ],
         "summary" : "Authenticate User",
@@ -35,25 +35,25 @@
         "consumes" : [ "application/x-www-form-urlencoded" ],
         "parameters" : [ {
           "type" : "string",
+          "name" : "grant_type",
+          "in" : "formData",
+          "required" : true,
+          "x-nullable" : false,
+          "description" : "The type of credentials authorizing the request for an access token. (Use \"password\")"
+        }, {
+          "type" : "string",
           "name" : "username",
           "in" : "formData",
           "required" : true,
           "x-nullable" : false,
-          "description" : "Email address of the user. (Use \"admin@boldbi.com\")"
+          "description" : "Email address of the user. (Use guest@boldbi.com for this demo API)"
         }, {
           "type" : "string",
           "name" : "password",
           "in" : "formData",
           "required" : true,
           "x-nullable" : false,
-          "description" : "Password of the user. (Use )"
-        }, {
-          "type" : "string",
-          "name" : "grant_type",
-          "in" : "formData",
-          "required" : true,
-          "x-nullable" : false,
-          "description" : "The type of credentials authorizing the request for an access token. Valid values: `\"password\"`"
+          "description" : "Password of the user. (Use Demo759! for this demo API)"
         } ],
         "responses" : {
           "200" : {
@@ -78,7 +78,7 @@
         }
       }
     },
-    "/api/v1.0/users" : {
+    "/v1.0/users" : {
       "post" : {
         "tags" : [ "Users" ],
         "summary" : "Add User",
@@ -145,7 +145,7 @@
         }
       }
     },
-    "/api/v1.0/users/{user}" : {
+    "/v1.0/users/{user}" : {
       "put" : {
         "tags" : [ "Users" ],
         "summary" : "Modifies information about the specified user.",
@@ -196,7 +196,7 @@
         }
       }
     },
-    "/api/v1.O/users/{user}" : {
+    "/v1.O/users/{user}" : {
       "delete" : {
         "tags" : [ "Users" ],
         "summary" : "Deletes the specified user.",
@@ -269,7 +269,7 @@
         }
       }
     },
-    "/api/v1.0/groups" : {
+    "/v1.0/groups" : {
       "post" : {
         "tags" : [ "Groups" ],
         "summary" : "Add group",
@@ -339,7 +339,7 @@
         }
       }
     },
-    "/api/v1.0/groups/{id}" : {
+    "/v1.0/groups/{id}" : {
       "delete" : {
         "tags" : [ "Groups" ],
         "summary" : "Deletes the specified group.",
@@ -467,7 +467,7 @@
         }
       }
     },
-    "/api/v1.0/groups/{id}/users" : {
+    "/v1.0/groups/{id}/users" : {
       "get" : {
         "tags" : [ "Groups" ],
         "summary" : "Returns a list of users for the specified group.",
